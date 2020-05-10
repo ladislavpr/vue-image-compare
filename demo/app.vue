@@ -21,13 +21,12 @@
     <div v-show="showOptions" class="options">
       <div class="columns">
         <div class="column has-text-centered">
-          <h1 class="title">
-            {{ pkg.displayName }}
-          </h1>
-          <h2 class="subtitle">
-            version {{ pkg.version }}
-          </h2>
-          <a :href="pkg.homepage">Project, sources & documentation on GitHub <i class="fab fa-github" aria-hidden="true" /> </a>
+          <h1 class="title">{{ pkg.displayName }}</h1>
+          <h2 class="subtitle">version {{ pkg.version }}</h2>
+          <a :href="pkg.homepage">
+            Project, sources & documentation on GitHub
+            <i class="fab fa-github" aria-hidden="true" />
+          </a>
         </div>
       </div>
 
@@ -153,7 +152,7 @@ import ImageCompare from '../src/vue-image-compare'
 
 export default {
   components: {
-    ImageCompare
+    ImageCompare,
   },
   data () {
     return {
@@ -168,15 +167,15 @@ export default {
       hideHandle: false,
       labels: {
         before: 'Before',
-        after: 'After'
+        after: 'After',
       },
       zoom: {
         min: 0.5,
-        max: 4
+        max: 4,
       },
-      pkg
+      pkg,
     }
-  }
+  },
 }
 </script>
 
