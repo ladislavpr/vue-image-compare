@@ -3,4 +3,5 @@ module.exports = {
   user_mail: 'romain.racamier@gmail.com',
   license: 'MIT',
   max_size_ko: 12,
+  npm_package: true,
 }
