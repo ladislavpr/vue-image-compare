@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './app.vue'
+import './tracker'
 
 Vue.config.productionTip = false
 
