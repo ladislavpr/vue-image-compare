@@ -150,7 +150,7 @@ export default {
       return this.isDraggingImage || this.isDraggingHandle
     },
     dimensions () {
-      let zoom = parseFloat(this.mutableZoom.toFixed(2))
+      const zoom = parseFloat(this.mutableZoom.toFixed(2))
 
       return {
         width: `${this.width}px`,
@@ -259,8 +259,8 @@ export default {
     updatePos () {
       if (!this.isDraggable || (this.isDraggable && this.isDraggingHandle)) {
         let posX = this.pageX - this.$el.getBoundingClientRect().left
-        let pr = this.padding.right
-        let pl = this.padding.left
+        const pr = this.padding.right
+        const pl = this.padding.left
 
         if (posX < pl) {
           posX = pl
@@ -326,14 +326,14 @@ export default {
       let timeout
 
       return function () {
-        let context = this
-        let args = arguments
-        let later = function () {
+        const context = this
+        const args = arguments
+        const later = function () {
           timeout = null
           if (!immediate) func.apply(context, args)
         }
 
-        let callNow = immediate && !timeout
+        const callNow = immediate && !timeout
         clearTimeout(timeout)
         timeout = setTimeout(later, wait)
         if (callNow) func.apply(context, args)
@@ -371,7 +371,7 @@ export default {
         event.preventDefault()
         this.showDropzone = false
         // console.log('drop', event)
-        let files = event.dataTransfer.files
+        const files = event.dataTransfer.files
 
         if (files.length === 1) {
           console.log('drop file :', files[0])

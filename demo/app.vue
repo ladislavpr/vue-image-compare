@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div v-if="showInstructions" class="instructions" @click="toggleInstructions" />
     <image-compare
       :before="before"
       :after="after"
@@ -9,21 +10,21 @@
       :is-switchable="isSwitchable"
       :is-draggable="isDraggable"
       :hide-handle="hideHandle"
-      :zoom="{min: zoom.min, max: zoom.max}"
-      :labels="{before: labels.before, after: labels.after}"
+      :zoom="{ min: zoom.min, max: zoom.max }"
+      :labels="{ before: labels.before, after: labels.after }"
     >
       <i slot="icon-left" class="fas fa-angle-left" aria-hidden="true" />
       <i slot="icon-right" class="fas fa-angle-right" aria-hidden="true" />
     </image-compare>
 
-    <i title="Show options" class="show-options fas fa-sliders-h" aria-hidden="true" @click="showOptions = !showOptions" />
+    <i title="Show options" class="show-options fas fa-sliders-h" aria-hidden="true" @click="toggleOptions" />
 
     <div v-show="showOptions" class="options">
       <div class="columns">
         <div class="column has-text-centered">
           <h1 class="title">{{ pkg.displayName }}</h1>
           <h2 class="subtitle">version {{ pkg.version }}</h2>
-          <a :href="pkg.homepage">
+          <a target="_blank" :href="pkg.homepage" onclick="howuku.track('github-link')">
             Project, sources & documentation on GitHub
             <i class="fab fa-github" aria-hidden="true" />
           </a>
@@ -139,14 +140,14 @@
       </div>
       <hr>
       <div class="columns is-centered">
-        <button class="button is-info" @click="showOptions = !showOptions">Hide options</button>
+        <button class="button is-info" @click="toggleOptions">Hide options</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-/* global require */
+/* global require, howuku */
 import pkg from '../package.json'
 import ImageCompare from '../src/vue-image-compare'
 
@@ -156,13 +157,14 @@ export default {
   },
   data () {
     return {
-      before: require('./assets/before.jpg'),
-      after: require('./assets/after.jpg'),
+      before: require('./assets/before.svg'),
+      after: require('./assets/after.svg'),
       full: true,
       hideAfter: false,
       isZoomable: true,
       isSwitchable: true,
       isDraggable: true,
+      showInstructions: true,
       showOptions: false,
       hideHandle: false,
       labels: {
@@ -176,6 +178,21 @@ export default {
       pkg,
     }
   },
+  mounted () {
+    window.addEventListener('drop', () => {
+      howuku.track('user-drop')
+      if (this.showInstructions) this.showInstructions = false
+    })
+  },
+  methods: {
+    toggleInstructions () {
+      this.showInstructions = !this.showInstructions
+    },
+    toggleOptions () {
+      this.showOptions = !this.showOptions
+      howuku.track('toggle-options')
+    },
+  },
 }
 </script>
 
@@ -188,6 +205,19 @@ body,
   height: 100%;
   overflow: hidden;
   --options-width: 900px;
+}
+.instructions {
+  background-image: url("./assets/instructions.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 20vh black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
 .options,
 .show-options {

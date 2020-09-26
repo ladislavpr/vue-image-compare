@@ -150,13 +150,14 @@ Example:
 To contribute or try this component :
 
 - clone this repo
-- install dependencies : `yarn install`
-- start dev task : `yarn dev`
+- install dependencies : `npm install`
+- start dev task : `npm run dev`
 
 ## Thanks
 
 - [ctf0](https://github.com/ctf0) : for his multiple contributions :heart:
 - [Netlify](https://netlify.com) : awesome company that offers hosting for OSS
+- [Pixabay](https://pixabay.com) : for the free to use images
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
 - [Travis-ci.org](https://travis-ci.org) : for providing free continuous deployments
 
