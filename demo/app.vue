@@ -179,12 +179,16 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('drop', () => {
-      howuku.track('user-drop')
-      if (this.showInstructions) this.showInstructions = false
-    })
+    window.addEventListener('drop', this.onDrop)
+  },
+  beforeDestroy () {
+    window.removeEventListener('drop', this.onDrop)
   },
   methods: {
+    onDrop () {
+      howuku.track('user-drop')
+      if (this.showInstructions) this.showInstructions = false
+    },
     toggleInstructions () {
       this.showInstructions = !this.showInstructions
     },
