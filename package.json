@@ -22,7 +22,7 @@
     "eslint-plugin-vue": "6.2.2",
     "repo-check": "1.10.0",
     "vue": "2.6.12",
-    "vue-meta": "^2.4.0",
+    "vue-meta": "2.4.0",
     "vue-template-compiler": "2.6.12"
   },
   "displayName": "Vue Image Compare",
