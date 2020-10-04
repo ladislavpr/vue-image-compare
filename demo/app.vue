@@ -155,6 +155,12 @@ export default {
   components: {
     ImageCompare,
   },
+  metaInfo: {
+    title: 'Image Compare - Online image comparison tool, side by side with slider & zoom !',
+    htmlAttrs: {
+      lang: 'en',
+    },
+  },
   data () {
     return {
       before: require('./assets/before.svg'),
