@@ -116,11 +116,11 @@ export default {
   },
   data () {
     return {
-      width: null,
-      height: null,
-      pageX: null,
-      pageY: null,
-      posX: null,
+      width: undefined,
+      height: undefined,
+      pageX: undefined,
+      pageY: undefined,
+      posX: undefined,
       isDraggingHandle: false,
       isDraggingImage: false,
       allowNextFrame: true,
@@ -150,7 +150,7 @@ export default {
       return this.isDraggingImage || this.isDraggingHandle
     },
     dimensions () {
-      const zoom = parseFloat(this.mutableZoom.toFixed(2))
+      const zoom = Number.parseFloat(this.mutableZoom.toFixed(2))
 
       return {
         width: `${this.width}px`,
@@ -220,8 +220,8 @@ export default {
       event.preventDefault()
       this.isDraggingHandle = false
       this.isDraggingImage = false
-      this.pageX = null
-      this.pageY = null
+      this.pageX = undefined
+      this.pageY = undefined
       if (event.button === 1) {
         this.onWheelClick()
       }
@@ -307,13 +307,13 @@ export default {
     // click
     onWheelClick () {
       // will flick images quickly
-      let i = 0
-      for (i = 0; i < 10; i++) {
-        setTimeout(this.switchImages, i * 100)
+      let index = 0
+      for (index = 0; index < 10; index++) {
+        setTimeout(this.switchImages, index * 100)
       }
 
       // reset after visibility
-      setTimeout(() => (this.showAfter = true), i * 100)
+      setTimeout(() => (this.showAfter = true), index * 100)
     },
     onRightClick (event) {
       // console.log('switching images')
@@ -322,21 +322,19 @@ export default {
     },
 
     // helper
-    debounce (func, wait, immediate) {
+    debounce (function_, wait, immediate) {
       let timeout
-
       return function () {
         const context = this
-        const args = arguments
+        const arguments_ = arguments
         const later = function () {
-          timeout = null
-          if (!immediate) func.apply(context, args)
+          timeout = undefined
+          if (!immediate) function_.apply(context, arguments_)
         }
-
         const callNow = immediate && !timeout
         clearTimeout(timeout)
         timeout = setTimeout(later, wait)
-        if (callNow) func.apply(context, args)
+        if (callNow) function_.apply(context, arguments_)
       }
     },
     switchImages () {
@@ -403,7 +401,7 @@ export default {
     loadFile (file, leftSide) {
       var reader = new FileReader()
 
-      reader.onload = (event) => {
+      reader.addEventListener('load', (event) => {
         if (leftSide) {
           this.afterName = this.getFileName(file)
           this.afterSize = this.getFileSize(file)
@@ -413,7 +411,7 @@ export default {
           this.beforeSize = this.getFileSize(file)
           this.mutableBefore = event.target.result
         }
-      }
+      })
       reader.readAsDataURL(file)
     },
   },

@@ -148,7 +148,7 @@
 
 <script>
 /* global require, howuku */
-import pkg from '../package.json'
+import packageJson from '../package.json'
 import ImageCompare from '../src/vue-image-compare'
 
 export default {
@@ -184,7 +184,7 @@ export default {
         min: 0.5,
         max: 4,
       },
-      pkg,
+      pkg: packageJson,
     }
   },
   mounted () {
