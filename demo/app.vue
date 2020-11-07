@@ -160,6 +160,9 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
+    link: [
+      { rel: 'favicon', href: './assets/favicon.ico' },
+    ],
   },
   data () {
     return {

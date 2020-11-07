@@ -55,6 +55,7 @@
     "postversion": "git push && git push --tags && npm publish",
     "preversion": "npm run ci",
     "start": "vue-cli-service serve demo/main.js -o",
+    "serve": "npx servor dist -o",
     "test": "npm run lint && npm run check",
     "update": "npx npm-check-updates -u"
   },

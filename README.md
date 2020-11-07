@@ -18,6 +18,7 @@
     - [Slots](#slots)
     - [Events](#events)
   - [Development](#development)
+  - [Todo](#todo)
   - [Thanks](#thanks)
   - [License](#license)
 
@@ -153,9 +154,14 @@ To contribute or try this component :
 - install dependencies : `npm install`
 - start dev task : `npm run dev`
 
+## Todo
+
+- Submit this app to [ProductHunt](https://www.producthunt.com/)
+
 ## Thanks
 
 - [ctf0](https://github.com/ctf0) : for his multiple contributions :heart:
+- [FreeIcons.io](https://freeicons.io/material-icons-images/compare-icon-15244): for the logo/icon
 - [Netlify](https://netlify.com) : awesome company that offers hosting for OSS
 - [Pixabay](https://pixabay.com) : for the free to use images
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
