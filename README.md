@@ -1,8 +1,9 @@
 # Vue Image Compare
 
 [![npm](https://img.shields.io/npm/v/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
-[![npm](https://img.shields.io/npm/dt/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
+[![npm monthly downloads](https://img.shields.io/npm/dm/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
 [![vue2](https://img.shields.io/badge/vue-2-brightgreen.svg?color=informational)](https://vuejs.org/)
+[![Package Quality](https://npm.packagequality.com/shield/vue-image-compare2.svg)](https://packagequality.com/#?package=vue-image-compare2)
 [![GitHub license](https://img.shields.io/github/license/shuunen/vue-image-compare.svg?color=informational)](https://github.com/Shuunen/vue-image-compare/blob/master/LICENSE)
 
 [![Build Status](https://travis-ci.org/Shuunen/vue-image-compare.svg?branch=master)](https://travis-ci.org/Shuunen/vue-image-compare)
@@ -161,11 +162,15 @@ To contribute or try this component :
 ## Thanks
 
 - [ctf0](https://github.com/ctf0) : for his multiple contributions :heart:
+- [Eslint](https://eslint.org) : super tool to find & fix problems
 - [FreeIcons.io](https://freeicons.io/material-icons-images/compare-icon-15244): for the logo/icon
+- [Github](https://github.com) : for all their great work year after year, pushing OSS forward
 - [Netlify](https://netlify.com) : awesome company that offers hosting for OSS
 - [Pixabay](https://pixabay.com) : for the free to use images
+- [Repo-checker](https://github.com/Shuunen/repo-checker) : eslint cover /src code and this tool the rest ^^
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
 - [Travis-ci.org](https://travis-ci.org) : for providing free continuous deployments
+- [Vue](https://vuejs.org) : when I need a front framework, this is the one I choose <3
 
 ## License
 
