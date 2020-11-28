@@ -157,7 +157,7 @@ To contribute or try this component :
 
 ## Todo
 
-- Submit this app to [ProductHunt](https://www.producthunt.com/)
+- [ ] submit this app to [ProductHunt](https://www.producthunt.com/)
 
 ## Thanks
 

@@ -19,14 +19,12 @@
 
     <!-- handle -->
     <div v-if="!hideHandle" v-show="!hideAfter" :style="{ left: posX + 'px' }" class="handle" @mousedown.prevent="onMouseDownHandle">
-      <template>
-        <span class="handle-icon left">
-          <slot name="icon-left" />
-        </span>
-        <span class="handle-icon right">
-          <slot name="icon-right" />
-        </span>
-      </template>
+      <span class="handle-icon left">
+        <slot name="icon-left" />
+      </span>
+      <span class="handle-icon right">
+        <slot name="icon-right" />
+      </span>
     </div>
 
     <!-- b-label -->
@@ -399,7 +397,7 @@ export default {
       return '(' + Math.round(file.size / 1024) + ' Ko)'
     },
     loadFile (file, leftSide) {
-      var reader = new FileReader()
+      const reader = new FileReader()
 
       reader.addEventListener('load', (event) => {
         if (leftSide) {
