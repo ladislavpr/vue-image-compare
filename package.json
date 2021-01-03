@@ -22,7 +22,7 @@
     "eslint-plugin-standard": "4.1.0",
     "eslint-plugin-unicorn": "23.0.0",
     "eslint-plugin-vue": "7.1.0",
-    "repo-check": "1.14.2",
+    "repo-check": "1.14.3",
     "vue": "2.6.12",
     "vue-meta": "2.4.0",
     "vue-template-compiler": "2.6.12"
