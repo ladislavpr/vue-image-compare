@@ -6,7 +6,7 @@
 [![Package Quality](https://npm.packagequality.com/shield/vue-image-compare2.svg)](https://packagequality.com/#?package=vue-image-compare2)
 [![GitHub license](https://img.shields.io/github/license/shuunen/vue-image-compare.svg?color=informational)](https://github.com/Shuunen/vue-image-compare/blob/master/LICENSE)
 
-[![Build Status](https://travis-ci.org/Shuunen/vue-image-compare.svg?branch=master)](https://travis-ci.org/Shuunen/vue-image-compare)
+[![Build Status](https://travis-ci.com/Shuunen/vue-image-compare.svg?branch=master)](https://travis-ci.com/Shuunen/vue-image-compare)
 [![David](https://img.shields.io/david/shuunen/vue-image-compare.svg)](https://david-dm.org/shuunen/vue-image-compare)
 [![Website](https://img.shields.io/website/https/image-compare.netlify.app.svg)](https://image-compare.netlify.app)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Shuunen/vue-image-compare?branch=master)](https://bettercodehub.com/)
@@ -169,7 +169,7 @@ To contribute or try this component :
 - [Pixabay](https://pixabay.com) : for the free to use images
 - [Repo-checker](https://github.com/Shuunen/repo-checker) : eslint cover /src code and this tool the rest ^^
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
-- [Travis-ci.org](https://travis-ci.org) : for providing free continuous deployments
+- [Travis-ci.com](https://travis-ci.com) : for providing free continuous deployments
 - [Vue](https://vuejs.org) : when I need a front framework, this is the one I choose <3
 
 ## License
