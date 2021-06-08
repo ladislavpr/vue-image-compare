@@ -213,7 +213,7 @@ body,
 }
 
 .instructions {
-  background-image: url("./assets/instructions.svg");
+  background-image: url("/assets/instructions.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
