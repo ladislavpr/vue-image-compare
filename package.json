@@ -8,8 +8,8 @@
   ],
   "description": "Compare two images with a fancy slider",
   "devDependencies": {
-    "shuunen-stack": "0.6.2",
     "npm-run-all": "*",
+    "shuunen-stack": "0.9.6",
     "vite": "2.0.5",
     "vite-plugin-vue2": "1.4.0",
     "vue": "2.6.14"

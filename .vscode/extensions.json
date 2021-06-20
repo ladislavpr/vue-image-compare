@@ -1,6 +1,6 @@
 {
   "recommendations": [
     "octref.vetur",
-    "samverschueren.linter-xo"
+    "dbaeumer.vscode-eslint"
   ]
 }
