@@ -1,5 +1,7 @@
 # Vue Image Compare
 
+[![Install size](https://badgen.net/packagephobia/install/vue-image-compare2)](https://packagephobia.com/result?p=vue-image-compare2)
+[![Publish size](https://img.shields.io/bundlephobia/min/vue-image-compare2?label=publish%20size)](https://bundlephobia.com/package/vue-image-compare2)
 [![npm](https://img.shields.io/npm/v/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
 [![npm monthly downloads](https://img.shields.io/npm/dm/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
 [![vue2](https://img.shields.io/badge/vue-2-brightgreen.svg?color=informational)](https://vuejs.org/)
