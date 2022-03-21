@@ -1,8 +1,12 @@
 <template>
-  <figure :class="{ full }" class="image-compare" @mousemove.prevent="onMouseMove" @click.prevent="onMouseMove($event, true)">
+  <figure :class="{ full }" class="image-compare" @mousemove.prevent="onMouseMove" @touchmove.prevent="onMouseMove"
+ @click.prevent="onMouseMove($event, true)" @touchend.prevent="onMouseMove($event, true)" @touchcancel.prevent="onMouseMove($event, true)"
+
+
+>
     <div :class="{ visible: showDropzone }" class="drop-zone">Drop 1 or 2 images here !</div>
 
-    <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper" @mousedown.prevent="onMouseDownImage">
+    <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper" @mousedown.prevent="onMouseDownImage" @touchstart.prevent="onMouseDownImage">
       <img :src="mutableAfter" :style="dimensions" alt="after" />
       <div v-show="afterLabel" class="after-name">
         {{ afterLabel }}
@@ -10,9 +14,10 @@
       </div>
     </div>
 
-    <img :src="mutableBefore" :style="dimensions" alt="before" @mousedown.prevent="onMouseDownImage" />
+    <img :src="mutableBefore" :style="dimensions" alt="before" @mousedown.prevent="onMouseDownImage" @touchstart.prevent="onMouseDownImage" />
 
-    <div v-if="!hideHandle" v-show="!hideAfter" :style="{ left: posX + 'px' }" class="handle" @mousedown.prevent="onMouseDownHandle">
+    <div v-if="!hideHandle" v-show="!hideAfter" :style="{ left: posX + 'px' }" class="handle" @mousedown.prevent="onMouseDownHandle" @touchstart.prevent="onMouseDownHandle"
+>
       <span class="handle-icon left">
         <slot name="icon-left" />
       </span>
@@ -163,6 +168,10 @@ export default {
   },
   created () {
     window.addEventListener('mouseup', this.onMouseUp)
+
+    window.addEventListener('touchend', this.onMouseUp)
+    window.addEventListener('touchcancel', this.onMouseUp)
+
     window.addEventListener('resize', this.onResize)
     window.addEventListener('contextmenu', this.onRightClick)
     window.addEventListener('dragenter', this.onDragEnter)
@@ -175,6 +184,9 @@ export default {
   },
   beforeDestroy () {
     window.removeEventListener('mouseup', this.onMouseUp)
+    window.removeEventListener('mouseend', this.onMouseUp)
+    window.removeEventListener('mousecancel', this.onMouseUp)
+
     window.removeEventListener('resize', this.onResize)
     this.$el.removeEventListener('wheel', this.onWheel)
     window.removeEventListener('contextmenu', this.onRightClick)
@@ -212,12 +224,17 @@ export default {
         this.allowNextFrame = false
         let pageX = event.pageX
         let pageY = event.pageY
-        if (event.targetTouches) {
+        if (event.targetTouches && event.targetTouches.length) {
           pageX = event.targetTouches[0].pageX
           pageY = event.targetTouches[0].pageY
-        } else if (event.originalEvent && event.originalEvent.targetTouches) {
+        } else if (
+          event.originalEvent && event.originalEvent.targetTouches && event.originalEvent.targetTouches.length
+        ) {
           pageX = event.originalEvent.targetTouches[0].pageX
           pageY = event.originalEvent.targetTouches[0].pageY
+        } else if (event.changedTouches && event.changedTouches.length) {
+          pageX = event.changedTouches[0].pageX
+          pageY = event.changedTouches[0].pageY
         }
         this.diffX = this.pageX ? pageX - this.pageX : 0
         this.diffY = this.pageY ? pageY - this.pageY : 0

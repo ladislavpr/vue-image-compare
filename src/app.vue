@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div v-if="showInstructions" class="instructions" @click="toggleInstructions" />
+    <div v-if="showInstructions" class="instructions" @click="toggleInstructions" @touchstart="toggleInstructions"
+ />
     <image-compare
       :before="before"
       :after="after"
