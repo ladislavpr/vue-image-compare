@@ -1,22 +1,58 @@
 <template>
   <figure :class="{ full }" class="image-compare" @mousemove.prevent="onMouseMove" @touchmove.prevent="onMouseMove"
- @click.prevent="onMouseMove($event, true)" @touchend.prevent="onMouseMove($event, true)" @touchcancel.prevent="onMouseMove($event, true)"
+@click.prevent="onMouseMove($event, true)"
+@touchend.prevent="onMouseMove($event, true)"
+@touchcancel.prevent="onMouseMove($event, true)"
+
 
 
 >
     <div :class="{ visible: showDropzone }" class="drop-zone">Drop 1 or 2 images here !</div>
 
-    <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper" @mousedown.prevent="onMouseDownImage" @touchstart.prevent="onMouseDownImage">
-      <img :src="mutableAfter" :style="dimensions" alt="after" />
+    <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper">
+      
+      <PinchScrollZoom
+        ref="zoomer"
+        :width="dimensions.width"
+        :height="dimensions.height"
+        :scale="1"
+        @scaling="scalingHandler"
+        @startDrag="onMouseDownImage"
+        @stopDrag="onMouseUp"
+        :translate-x="0"
+        :translate-y="0"
+      >
+        <img :src="mutableAfter" :style="dimensions" alt="after" 
+/>
+
+      </PinchScrollZoom>
       <div v-show="afterLabel" class="after-name">
         {{ afterLabel }}
         <div v-show="afterSize" class="size">{{ afterSize }}</div>
       </div>
     </div>
 
-    <img :src="mutableBefore" :style="dimensions" alt="before" @mousedown.prevent="onMouseDownImage" @touchstart.prevent="onMouseDownImage" />
+    <PinchScrollZoom
+      ref="zoomer"
+      :width="dimensions.width"
+      :height="dimensions.height"
+      :scale="1"
+      :translate-x="0"
+      :translate-y="0"
+
+      @scaling="scalingHandler"
+      @startDrag="onMouseDownImage"
+      @stopDrag="onMouseUp"
+
+
+
+
+    >
+      <img :src="mutableBefore" :style="dimensions" alt="before"/>
+    </PinchScrollZoom>
 
     <div v-if="!hideHandle" v-show="!hideAfter" :style="{ left: posX + 'px' }" class="handle" @mousedown.prevent="onMouseDownHandle" @touchstart.prevent="onMouseDownHandle"
+
 >
       <span class="handle-icon left">
         <slot name="icon-left" />
@@ -34,6 +70,8 @@
 </template>
 
 <script>
+import PinchScrollZoom from '@coddicat/vue-pinch-scroll-zoom';
+
 export default {
   props: {
     before: {
@@ -134,6 +172,9 @@ export default {
       afterSize: '',
     }
   },
+  components: {
+    PinchScrollZoom
+  },
   computed: {
     afterLabel () {
       return this.afterName || this.labels.after
@@ -179,7 +220,7 @@ export default {
     window.addEventListener('drop', this.onDrop)
   },
   mounted () {
-    this.$el.addEventListener('wheel', this.onWheel)
+    // this.$el.addEventListener('wheel', this.onWheel)
     this.onResize()
   },
   beforeDestroy () {
@@ -188,7 +229,6 @@ export default {
     window.removeEventListener('mousecancel', this.onMouseUp)
 
     window.removeEventListener('resize', this.onResize)
-    this.$el.removeEventListener('wheel', this.onWheel)
     window.removeEventListener('contextmenu', this.onRightClick)
     window.removeEventListener('dragenter', this.onDragEnter)
     window.removeEventListener('dragover', this.onDragOver)
@@ -210,7 +250,9 @@ export default {
       this.$emit('movement')
     },
     onMouseUp (event) {
-      event.preventDefault()
+      if(event && event.preventDefault) {
+        event.preventDefault()
+      }
       this.isDraggingHandle = false
       this.isDraggingImage = false
       this.pageX = undefined
@@ -242,6 +284,9 @@ export default {
         this.pageY = pageY
         window.requestAnimationFrame(this.updatePosition)
       }
+    },
+    onDrag(evt) {
+      this.onMouseMove({pageX: x, pageY: y}, true)
     },
     updatePosition () {
       if (!this.isDraggable || (this.isDraggable && this.isDraggingHandle)) {
@@ -275,6 +320,17 @@ export default {
           this.mutableZoom = this.zoom.min
         }
       })
+    },
+    scalingHandler (event) {
+      if (!this.isZoomable) return
+      this.mutableZoom = event.scale
+      this.$nextTick(() => {
+        if (this.mutableZoom >= this.zoom.max) {
+          this.mutableZoom = this.zoom.max 
+        } else if (this.mutableZoom <= this.zoom.min) {
+          this.mutableZoom = this.zoom.min
+        }
+      }) 
     },
     onWheelClick () {
       // will flick images quickly
@@ -347,3 +403,10 @@ export default {
 </script>
 
 <style scoped src="./vue-image-compare.css"></style>
+<style>
+
+.image-compare .pinch-scroll-zoom { height: 100%; }
+.image-compare .pinch-scroll-zoom__content
+{ transform: none !important; }
+
+</style>

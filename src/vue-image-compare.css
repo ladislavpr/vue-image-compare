@@ -11,7 +11,8 @@
   }
 }
 
-.after-name, .before-name {
+.after-name,
+.before-name {
   background-color: white;
   bottom: 0;
   font-size: 1rem;
@@ -23,7 +24,8 @@
   white-space: nowrap;
 }
 
-.after-name .size, .before-name .size {
+.after-name .size,
+.before-name .size {
   color: gray;
   font-family: monospace;
   font-size: 1.2rem;
@@ -88,7 +90,8 @@ img {
   width: 100%;
 }
 
-.wrapper, .handle {
+.wrapper,
+.handle {
   bottom: 0;
   position: absolute;
   top: 0;
