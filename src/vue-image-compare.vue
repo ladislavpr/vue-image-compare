@@ -1,12 +1,10 @@
 <template>
-  <figure :class="{ full }" class="image-compare" @mousemove.prevent="onMouseMove" @touchmove.prevent="onMouseMove"
-@click.prevent="onMouseMove($event, true)"
-@touchend.prevent="onMouseMove($event, true)"
-@touchcancel.prevent="onMouseMove($event, true)"
-
-
-
->
+  <figure :class="{ full }" class="image-compare"
+  @mousemove.prevent="onMouseMove"
+  @touchmove.prevent="onMouseMove"
+  @click.prevent="onMouseMove($event, true)"
+  @touchend.prevent="onMouseMove($event, true)"
+  @touchcancel.prevent="onMouseMove($event, true)">
     <div :class="{ visible: showDropzone }" class="drop-zone">Drop 1 or 2 images here !</div>
 
     <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper">
@@ -72,7 +70,9 @@
 <script>
 import PinchScrollZoom from '@coddicat/vue-pinch-scroll-zoom';
 
-export default {
+export default /*#__PURE__*/
+{
+  name: 'ImageCompare',
   props: {
     before: {
       type: String,
