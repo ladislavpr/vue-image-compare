@@ -5,6 +5,20 @@
   position: relative;
 }
 
+.image-compare ::v-deep .pinch-scroll-zoom {
+  height: 100%;
+}
+.image-compare :deep(.pinch-scroll-zoom) {
+  height: 100%;
+}
+
+.image-compare ::v-deep .pinch-scroll-zoom__content {
+  transform: none !important;
+}
+.image-compare :deep(.pinch-scroll-zoom__content) {
+  transform: none !important;
+}
+
 @media (prefers-color-scheme: light) {
   .image-compare {
     background-color: whitesmoke;

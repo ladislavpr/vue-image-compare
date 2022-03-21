@@ -46,7 +46,7 @@
     "serve": "vite preview"
   },
   "version": "1.0.0",
-  "dependencies": {
+  "peerDependencies": {
     "@coddicat/vue-pinch-scroll-zoom": "^3.3.4"
   }
 }

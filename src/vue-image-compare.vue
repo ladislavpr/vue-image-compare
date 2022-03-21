@@ -403,10 +403,3 @@ export default {
 </script>
 
 <style scoped src="./vue-image-compare.css"></style>
-<style>
-
-.image-compare .pinch-scroll-zoom { height: 100%; }
-.image-compare .pinch-scroll-zoom__content
-{ transform: none !important; }
-
-</style>
